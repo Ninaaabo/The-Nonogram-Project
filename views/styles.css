@@ -1,0 +1,52 @@
+body{
+    overflow: scroll;
+    background-color: beige;
+}   
+.square{
+    background-color: black;
+    border: 3px solid gray;
+}
+
+.choice{
+    width: 5vw;
+    height: 5vw;
+    margin: 20px;
+    border: 5px solid gray;
+}
+
+#fill{
+    background-color: black;
+}
+
+button:hover{
+    border-color: red;
+}
+
+.square.hide_black{
+    background-color: transparent;
+    /* border-color: black; */
+}
+.button_container{
+    font-size: 0;
+    margin: 20px;
+    border: 10px solid black;
+}
+
+.hide_x>svg{
+    display: none;
+}
+
+.red_out{
+    border-color: red;
+
+}
+.flex_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choice_container{
+    display: flex;
+    flex-direction: row;
+}
