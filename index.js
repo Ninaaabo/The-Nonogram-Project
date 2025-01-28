@@ -10,17 +10,16 @@ const app = express();
 const port = 3000;
 var x = 0;
 var y = 0;
-console.log("at line 13: ", process.env.user);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("views"));
 
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "pixel-art",
-  password: "Three2one0$",
+  user: process.env.user,
+  host: process.env.host,
+  database: process.env.database,
+  password: process.env.password,
   port: 5432,
 });
 db.connect();
