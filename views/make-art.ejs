@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="art-styles.css">
+
+</head>
+<body>
+        <div class="flex_container">
+            <div class="button_container">
+                <% for(var i = 0; i < y; i++){ 
+                    for(var j = 0; j < x; j++){ %>
+                        <button name="<%=j%>-<%=i%>" class="square hide_black" style="width: min(calc(60vw/<%=x%>), calc(70vh/<%=y%>)); height: min(calc(60vw/<%=x%>), calc(70vh/<%=y%>));">
+                        </button>
+                    <% } %>
+                    <br>
+                <% } %>
+            </div>
+            <form action="/art-submit" method="post">
+                <div class="hide">
+                    <% for(var i = 0; i < y; i++){ 
+                        for(var j = 0; j < x; j++){ %>
+                            <input type="hidden" name="<%=j%>-<%=i%>" id="<%=j%>-<%=i%>" value="white" >
+                        <% } %>
+                        <br>
+                    <% } %>
+                </div>
+                <input type="text" name="art_name" placeholder="Your art name" required>
+                <input type="submit" value="submit"/>
+
+            </form>
+
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="art-script.js" charset="utf-8">
+    </script>
+</body>
+</html>
