@@ -1,4 +1,26 @@
-<h1>Hello</h1>
-<% for(var i = 0; i < artList.length; i++){ %>
-    <a href="<%=url + artList[i].id%>"><button><%=artList[i].name%></button></a>
-<%}%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"></head>
+<body>
+    <header><a href ="<%=url%>"><button class="logo">NONOGRAMS!</button></a></header>
+    <div class="flex-gallery">
+        <% for(var i = 0; i < artList.length; i++){ %>
+            <div><a href="<%=url + "/get-nonogram?id=" + artList[i].id%>"><button class="nonogram-choice">
+                #<%=artList[i].id%>
+                <br>
+                <%=artList[i].x + "x" + artList[i].y%>
+            </button></a></div>
+        <%}%>
+    </div>
+    
+    
+
+</body>
+</html>

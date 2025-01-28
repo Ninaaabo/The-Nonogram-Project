@@ -1,13 +1,43 @@
-<form action="/make-art" method="post">
-    <label for="x">Width:</label><br>
 
-    <input type="number" name="x" id="x" value="10" required>
-    <br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="landing-styles.css">
+    <link rel="stylesheet" href="sizing-styles.css">
 
-    <label for="x">Height:</label><br>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <input type="number" name="y" id="y" value="10" required>
+</head>
+<body>
+    <header><a href ="<%=url%>"><button class="logo">NONOGRAMS!</button></a></header>
 
-    <input type="submit" value="submit"/>
+    
+        
+        <form action="/make-art" method="post">
+            <div class="landing-container">
+                <div>
+                    <label for="x">Width:</label>
 
-</form>
+                    <input class="number" type="number" name="x" id="x" value="10" required>
+                    &emsp;
+                    
+                    <label for="x">Height:</label>
+        
+                    <input class="number" type="number" name="y" id="y" value="10" required>
+                </div>
+                <div>
+                    <input class="submit" type="submit" value="Let's Draw ▶"/>
+
+                </div>
+            </div>
+        
+        </form>
+    </div>
+
+</body>
+</html>

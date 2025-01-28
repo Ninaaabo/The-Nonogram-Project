@@ -1,13 +1,10 @@
+var blackFirst = true;
 $(document).mousedown(function() {
-    var first = true;
-    var blackOut = true;
+
     $(".square").bind('mouseover',function(){
         var current = $(this).attr('name');
-        if(first){
-            first = false;
-            blackOut = $(this).hasClass("hide_black") ;
-        }
-        if(blackOut){
+
+        if(blackFirst){
             $(this).removeClass("hide_black");
             $('#' + current).attr("value", "black");
         }
@@ -26,15 +23,12 @@ $('.square').mousedown(function() {
 
     if($(this).hasClass("hide_black")){
         $(this).removeClass("hide_black");
-        // console.log("current is ", current);
-        // console.log($('#' + current).attr("name"), "has value: " + $('#' + current).attr("value"));
+        blackFirst = true;
         $('#' + current).attr("value", "black");
     }
     else{
         $(this).addClass("hide_black");
-        // console.log("current is ", current);
-
-        // console.log($('#' + current).attr("name"), "has value: " + $('#' + current).attr("value"));
+        blackFirst = false;
         $('#' + current).attr("value", "white");
     }
 

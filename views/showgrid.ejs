@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"></head>
 <body>
+    <header><a href ="<%=url%>"><button class="logo">NONOGRAMS!</button></a></header>
 
     <div class="flex_container">
-        <div><h1><%=name%></h1></div>
+        <div class="name"><%=name%></div>
         <div class="button_container">
 
             <% for(var i = 0; i < y; i++){ 
                 for(var j = 0; j < x; j++){ %>
                     
-                    <button
-                    style="width: min(calc(60vw/<%=x%>), calc(70vh/<%=y%>)); height: min(calc(60vw/<%=x%>), calc(70vh/<%=y%>));
-                    background-color: <%=(squares[j][i] === true)? 'black' : 'transparent'%>">
+                    <button class="square"
+                    style="width: min(calc(60vw/<%=x%>), calc(55vh/<%=y%>)); height: min(calc(60vw/<%=x%>), calc(55vh/<%=y%>));
+                    background-color: <%=(squares[i][j] === true)? '#12203e' : 'transparent'%>">
                     </button>
                 <% } %>
                 <br>
             <% } %>
         </div>
-        <div><a href="<%=url%>/all-art"><button>Try another one!</button></a></div>
-        <div><a href="<%=url%>"><button>Make one yourself!</button></a></div>
+        
+        <br>
+
+        <div><a href="<%=url%>/all-art"><button class="choose-next">Try another one ▶</button></a></div>
+        <div><a href="<%=url%>"><button class="choose-next">Make one yourself ▶</button></a></div>
 
     </div>
 

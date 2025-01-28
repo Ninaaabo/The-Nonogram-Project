@@ -1,0 +1,68 @@
+body{
+    background-color: #ffef9a;
+    font-family: "Dela Gothic One", serif;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+
+
+h2{
+    color: #3b4a6b;
+    font-size:max(2.5vw, 12pt);
+    transform: rotate(1deg);
+
+}
+
+h2 > .play{
+    color: white;
+    background-color: #fc5050;
+    padding: 0.3em 1.5em;
+    
+}
+
+h1{
+    font-size: max(4vw, 18pt);
+    color: white;
+    background-color: #20abeb;
+    padding: 0.2em 1em;
+    margin: 0;
+    transform: rotate(-2deg);
+    margin-bottom: 10vh;
+}
+
+.landing-container button, .submit{
+    font-family: "Space Mono", serif;
+    margin: 20px;
+    font-size:max(2vw, 10pt);
+    padding: 0.4em 2em;
+    border-radius: 1em;
+    background-color: transparent;
+    border: 0;
+    color: #3b4a6b;
+}
+
+.landing-container button:hover, .landing-container .submit:hover{
+    border: 3px solid #3b4a6b;
+}
+
+.landing-container button:active, .landing-container .submit:active{
+    background-color: #3b4a6b;
+    color: white;
+}
+.landing-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 8vh; */
+}
+
+.logo{
+    background-color: #20abeb;
+    margin: 0;
+    font-family: "Dela Gothic One", serif;
+    font-size: max(1vw, 9pt);
+    border-radius: 0;
+    color: white;
+    margin: 20px;
+    
+}

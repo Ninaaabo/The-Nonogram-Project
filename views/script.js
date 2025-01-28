@@ -2,17 +2,31 @@
 var fillWith = "hide_black";
 var firstBlack = true;
 var firstX = true;
-
 var numArr = JSON.parse($("#store_data").attr("data"));
+
 function start(){
     //activate this when game start to check for empty number array
     numArr[0].forEach((arr, i) => {
         if(arr.length === 0) 
             $("#x-" + i).addClass("done");
+        if(i%5===4){
+            for(var j = 0; j < numArr[1].length; j++){
+                console.log("im here")
+                $("#"+i + "-" + j).css("border-right-width", "5px");
+
+            }
+        }
     })
     numArr[1].forEach((arr, i) => {
         if(arr.length === 0) 
             $("#y-" + i).addClass("done");
+        if(i%5===4){
+            for(var j = 0; j < numArr[0].length; j++){
+                console.log("im here")
+                $("#"+j + "-" + i).css("border-bottom-width", "5px");
+
+            }
+        }
     })
     
 }

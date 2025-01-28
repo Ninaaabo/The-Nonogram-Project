@@ -1,12 +1,15 @@
 body{
     overflow: scroll;
-    background-color: beige;
-    min-width: 800px;
-    min-height: 850px;
+    background-color: #ffef9a;
+    overflow: scroll;
+    margin: 0;
+    font-family: "Dela Gothic One", serif;
+
 }   
 .square{
-    background-color: black;
-    border: 2px solid gray;
+    background-color: #12203e;
+    border: 1px solid gray;
+    
 }
 
 .choice{
@@ -17,7 +20,7 @@ body{
 }
 
 #fill{
-    background-color: black;
+    background-color: #12203e;
 }
 
 .square:hover{
@@ -46,7 +49,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    width: max(100vw, 700px);
+    
 }
 
 .choice_container{
@@ -60,29 +64,109 @@ body{
 
 .flex-button{
     position: relative;   
-    background-color: whitesmoke; 
+    background-color: #b2e7ff; 
     border-color: gray;
+    color: black;
+    font-family: "Space Mono", serif;
+
 }
 
 .flex-button.done{
-    background-color: gainsboro;
+    background-color: #55aed8;
+    color: rgb(130, 130, 130);
 }
 
 .x_number{
     position: absolute;
     bottom: 0;
-    left: 45%;
+    text-align: center;
+    left: 30%;
 }
 .y_number{
     position: absolute;
     right: 3px;
-    bottom: 5%;
+    bottom: 0;
 }
-
 .flex_horizontal{
     display: flex;
 }
 
 .result{
     display: none;
+}
+
+
+.hide{
+    display: none;
+
+}
+
+
+.logo{
+    background-color: #20abeb;
+    margin: 0;
+    font-family: "Dela Gothic One", serif;
+    font-size: max(1vw, 9pt);
+    border-radius: 0;
+    color: white;
+    margin: 20px;
+    
+}
+
+input{
+    font-family: "Space Mono", serif;
+    margin-top: 40px;
+    font-size:max(1vw, 10pt);
+}
+
+.name{
+    font-size:max(2vw, 16pt);
+    margin-bottom: 20px ;
+    color: white;
+    background-color: #20abeb;
+    padding: 0.2em 1em;
+}
+
+.choose-next{
+    background-color: transparent;
+    border: 0;
+    color: #3b4a6b;
+    margin: 10px;
+    font-size:max(1vw, 12pt);
+    font-family: "Space Mono", serif;
+    border-radius: 0.7em;
+
+    padding: 0.5em 1em;
+
+
+}
+
+
+.choose-next:hover{
+    border: 2px solid #3b4a6b;
+}
+
+.choose-next:active{
+    background-color: #3b4a6b;
+    color: white;
+}
+
+.flex-gallery{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+.nonogram-choice{
+    width: 20em;
+    height: 6em;
+    margin: 20px;
+    font-family: "Dela Gothic One", serif;
+    font-size: max(1vw, 9pt);
+    background-color: transparent;
+}
+
+.nonogram-choice:hover{
+    background-color: #20abeb;
+    color: white;
 }
