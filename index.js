@@ -3,8 +3,6 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import dotenv from 'dotenv';
 
-dotenv.config();
-
 
 const app = express();
 const port = 3000;
@@ -14,21 +12,38 @@ var y = 0;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("views"));
 
+dotenv.config();
+const {Pool} = pg;
+const db = new Pool({
+  connectionString: "postgresql://pixel_art_user:xkyhGwRMpUsv67XRPXYdFPRImldX6sLL@dpg-cuck5q5ds78s73a1hdjg-a.ohio-postgres.render.com/pixel_art?ssl=true",
+});
 
-const db = new pg.Client({
-  user: process.env.user,
-  host: process.env.host,
-  database: process.env.database,
-  password: process.env.password,
-  port: 5432,
+db.on("error", (e) => {
+  console.error("Database error", e);
+  db = null;
 });
 db.connect();
+
+
+
+// const db = new pg.Client({
+//   user: process.env.user,
+//   host: process.env.host,
+//   database: process.env.database,
+//   password: process.env.password,
+//   port: 5432,
+// });
+// db.connect();
 
 async function convertNumber(id){
   
   var info = await db.query("select * from art_info where id = $1", [id]);
+  // console.log("im loggin here");
+  // console.log(info.rows);
   var art = await db.query("select * from art_collection where id = $1", [id]);
   art = art.rows;
+  // console.log(art);
+
   if(info.rows.length === 0 ) return false;
   const x = info.rows[0].x;
   const y = info.rows[0].y;
@@ -42,6 +57,8 @@ async function convertNumber(id){
   
       for(var j = 0; j < num2; j++){
         const coordinate = (xFirst)? i*10+j : j*10+i;
+        // console.log("your coordinate: ", coordinate);
+        // console.log("pixel is ", JSON.stringify(art[coordinate]))
         if (currentCol.length === 0){
           if(art[coordinate].isblack) currentCol.push(1);
         }
@@ -55,14 +72,17 @@ async function convertNumber(id){
           }
           else middleWhite = true;
         }
+        // console.log("current col", currentCol)
       }
       result.push(currentCol);
     }
+    // console.log("your result", result)
     return result;
   }
   var xNumbers = makeNumber(x, y, true);
   var yNumbers = makeNumber(y, x, false);
 
+  console.log("your xnumbers: ", xNumbers)
   return [xNumbers, yNumbers];
 }
 
@@ -81,6 +101,7 @@ app.get("/sizing", (req, res) =>{
 })
 
 app.post("/art-submit", async(req, res) =>{
+  console.log("receiving", req.body);
   var id = await db.query(`
     INSERT INTO art_info(name, x, y)
     VALUES($1, $2, $3)
