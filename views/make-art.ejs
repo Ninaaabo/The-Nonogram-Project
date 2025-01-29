@@ -13,7 +13,9 @@
 </head>
 <body>
     <header><a href ="<%=url%>"><button class="logo">NONOGRAMS!</button></a></header>
-
+    <div class="popup">
+        <span class="popuptext" id="myPopup">Processing your art...</span>
+    </div>
         <div class="flex_container">
             <div class="button_container">
                 <% for(var i = 0; i < y; i++){ 
@@ -34,8 +36,9 @@
                     <% } %>
                 </div>
                 <input type="text" name="art_name" placeholder="Your art name" required>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" id="submit"/>
 
+                
             </form>
 
         </div>

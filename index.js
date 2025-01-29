@@ -15,7 +15,7 @@ app.use(express.static("views"));
 dotenv.config();
 const {Pool} = pg;
 const db = new Pool({
-  connectionString: "postgresql://pixel_art_user:xkyhGwRMpUsv67XRPXYdFPRImldX6sLL@dpg-cuck5q5ds78s73a1hdjg-a.ohio-postgres.render.com/pixel_art?ssl=true",
+  connectionString: process.env.POSTGRES_URL,
 });
 
 db.on("error", (e) => {
@@ -51,13 +51,14 @@ async function convertNumber(id){
   // x= 0, y run 
   let makeNumber = (num1, num2, xFirst) =>{
     const result = [];
+    var count = 0;
     for (var i = 0; i < num1; i++){
       const currentCol = [];
       var middleWhite = false;
   
       for(var j = 0; j < num2; j++){
-        const coordinate = (xFirst)? i*10+j : j*10+i;
-        // console.log("your coordinate: ", coordinate);
+        const coordinate = (xFirst)? count++ : j*y+i;
+        // console.log("your coordinate: ", coordinate, "j = ", j, "i = ", i, "y = ", y);
         // console.log("pixel is ", JSON.stringify(art[coordinate]))
         if (currentCol.length === 0){
           if(art[coordinate].isblack) currentCol.push(1);
@@ -72,7 +73,7 @@ async function convertNumber(id){
           }
           else middleWhite = true;
         }
-        // console.log("current col", currentCol)
+        // console.log("current col", currentCol, "xfirst: ", xFirst)
       }
       result.push(currentCol);
     }
@@ -80,9 +81,12 @@ async function convertNumber(id){
     return result;
   }
   var xNumbers = makeNumber(x, y, true);
+  // console.log("starting y")
   var yNumbers = makeNumber(y, x, false);
 
-  console.log("your xnumbers: ", xNumbers)
+  // console.log("your xnumbers: ", xNumbers)
+  // console.log("your ynumbers: ", yNumbers)
+
   return [xNumbers, yNumbers];
 }
 
@@ -101,7 +105,7 @@ app.get("/sizing", (req, res) =>{
 })
 
 app.post("/art-submit", async(req, res) =>{
-  console.log("receiving", req.body);
+  // console.log("receiving", req.body);
   var id = await db.query(`
     INSERT INTO art_info(name, x, y)
     VALUES($1, $2, $3)
@@ -174,17 +178,17 @@ app.post("/result", (req, res)=>{
 })
 
 app.post("/submit", (req, res) =>{
-  console.log(JSON.stringify(req.body));
+  // console.log(JSON.stringify(req.body));
   var squares = [[1, 1], [1, 1]];
   for(var i = 0; i < 2; i++){
     for(var j = 0; j < 2; j++){
       squares[j][i] = req.body[i + "-" + j];
-      console.log(squares);
+      // console.log(squares);
 
 
     }
   }
-  console.log(squares);
+  // console.log(squares);
   
   res.render("showgrid.ejs", {squares, x:2, y:2})
 })

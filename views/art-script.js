@@ -33,3 +33,9 @@ $('.square').mousedown(function() {
     }
 
 });
+
+
+$("#submit").on("click", () =>{
+    var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+})
