@@ -123,7 +123,7 @@ app.post("/art-submit", async(req, res) =>{
         `, [id, i, j, req.body[i + "-" + j] === "black"])
     }
   }
-  res.redirect("/all-art");
+  res.redirect("/get-nonogram?id="+id);
 })
 
 app.get("/all-art", async(req, res) =>{
@@ -160,7 +160,7 @@ app.get("/get-art", async(req, res)=>{
   }
   // console.log("your square is ", JSON.stringify(squares))
   // console.log();
-  res.render("showgrid.ejs", {name: info.name, squares, x: info.x, y: info.y, url: `${req.protocol}://${req.get('host')}`})
+  res.render("showgrid.ejs", {name: info.name, squares, id:info.id, x: info.x, y: info.y, url: `${req.protocol}://${req.get('host')}`})
   }
   
 })
