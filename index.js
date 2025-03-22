@@ -25,6 +25,16 @@ db.on("error", (e) => {
 db.connect();
 
 
+ 
+// const db = new pg.Client({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "pixel-art",
+//   password: "Three2one0$",
+//   port: 5432,
+// });
+// db.connect();
+
 
 // const db = new pg.Client({
 //   user: process.env.user,
